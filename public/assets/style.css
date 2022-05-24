@@ -2,3 +2,13 @@
 body {
   font-family: 'DM Sans', sans-serif;
 }
+fieldset {
+  width: fit-content;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+

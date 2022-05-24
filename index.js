@@ -4,6 +4,7 @@ const passport = require('passport');
 const dotenv = require('dotenv');
 dotenv.config();
 const auth = require('./routes/auth');
+const application = require('./routes/application');
 const User = require('./models/User');
 
 (async () => {
@@ -41,6 +42,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Routes
 app.use('/auth', auth);
+app.use('/application', application);
 app.get('/', (req, res) => {
   res.sendStatus(200);
 });

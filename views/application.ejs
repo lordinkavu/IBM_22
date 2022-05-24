@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Create application</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <form action="/application" method="POST">
+        <div>
+        <label for="title">Application title</label>
+        <input type="text" name="title" required>
+    </div>
+    <div>
+        <label for="body">Application body</label>
+        <input name="body"/>
+    </div>
+    <div>
+        <label for="pincode">Pin code</label>
+        <input type="number"  name="pincode">
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+    </form>
+</body>
+</html>

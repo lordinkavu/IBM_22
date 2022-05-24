@@ -10,11 +10,33 @@
     </head>
     <body>
         <form action="/auth/signup" method="POST">
+            <div>
             <label for="email">Email</label>
-            <input type="text" placeholder="Enter email" name="email" required>
+            <input type="text"  name="email" required>
+            </div>
+            <fieldset>
+                <legend>Type</legend>
+                <input type="radio" id="general"
+                 name="type" value="general">
+                <label for="general">General</label>
+            
+                <input type="radio" id="official"
+                 name="type" value="official">
+                <label for="official">Official</label>
+            
+            </fieldset>
+            <div>
+                <label for="pincode">Pincode</label>
+                <input type="text"  name="pincode" required>
+           </div>
+           
+            <div>
             <label for="password">Password</label>
-            <input type="password" placeholder="Enter password" name="password" required>
+            <input type="password"  name="password" required>
+            </div>
+            <div>
             <button type="submit">Sign up</button>
+            </div>
         </form>
         <script src="" async defer></script>
     </body>
