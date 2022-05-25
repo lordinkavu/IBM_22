@@ -6,7 +6,8 @@ dotenv.config();
 const auth = require('./routes/auth');
 const application = require('./routes/application');
 const User = require('./models/User');
-
+const Application = require('./models/Application');
+const checkAuthentication = require('./helpers/checkAuth');
 (async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
@@ -43,8 +44,21 @@ passport.deserializeUser(User.deserializeUser());
 // Routes
 app.use('/auth', auth);
 app.use('/application', application);
-app.get('/', (req, res) => {
-  res.sendStatus(200);
+app.get('/', checkAuthentication, async (req, res) => {
+  try {
+    let applications;
+
+    if (req.user.type === 'general') {
+      applications = await Application.find({ owner: req.user._id });
+      res.render('home', { applications });
+    } else {
+      applications = await Application.find({ pincode: req.user.pincode });
+      res.render('official-dashboard', { applications });
+    }
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
 });
 
 const port = process.env.PORT || 8000;

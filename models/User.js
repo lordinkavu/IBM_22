@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
   },
+  pincode: String,
 });
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 module.exports = mongoose.model('User', userSchema);
