@@ -25,7 +25,7 @@ router.post('/signup', (req, res) => {
         res.redirect('/auth/signup');
       }
       passport.authenticate('local')(req, res, () => {
-        res.sendStatus(200);
+        res.redirect('/');
       });
     }
   );

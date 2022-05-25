@@ -19,7 +19,7 @@ router.post('/', checkAuthentication, async (req, res) => {
       owner: req.user._id,
       status: 'applied',
     });
-    res.sendStatus(200);
+    res.redirect('/');
   } catch (e) {
     console.log(e);
     res.sendStatus(500);
@@ -28,18 +28,18 @@ router.post('/', checkAuthentication, async (req, res) => {
 
 router.post('/:status/:id', async (req, res) => {
   try {
-      if(req.params.status === 'resolve'){
-        await Application.findOneAndUpdate(
-            { _id: req.params.id },
-            { status: 'resolved' }
-          );
-      }else{
-        await Application.findOneAndUpdate(
-            { _id: req.params.id },
-            { status: 'rejected' }
-          );
-      }
-  
+    if (req.params.status === 'resolve') {
+      await Application.findOneAndUpdate(
+        { _id: req.params.id },
+        { status: 'resolved' }
+      );
+    } else {
+      await Application.findOneAndUpdate(
+        { _id: req.params.id },
+        { status: 'rejected' }
+      );
+    }
+
     res.redirect('/');
   } catch (e) {
     console.log(e);
